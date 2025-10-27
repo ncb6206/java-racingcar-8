@@ -1,5 +1,7 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +40,23 @@ public class Cars {
             names.add(name);
         }
         return names;
+    }
+
+    // 모든 자동차 1회 이동(난수 생성은 Cars에서)
+    public void moveAllOnceByRandom() {
+        for (Car car : values) {
+            int value = Randoms.pickNumberInRange(0, 9);
+            car.tryMove(value);
+        }
+    }
+
+    // 현재 상태 라인 목록
+    public List<String> statusLines() {
+        List<String> lines = new ArrayList<>();
+        for (Car car : values) {
+            lines.add(car.statusLine());
+        }
+        return lines;
     }
 
     public List<Car> asList() {
