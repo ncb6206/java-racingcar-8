@@ -1,10 +1,10 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
+import java.util.function.IntSupplier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.IntSupplier;
 
 public class Cars {
     private final List<Car> values;
@@ -43,10 +43,9 @@ public class Cars {
     }
 
     // 모든 자동차 1회 이동(난수 생성은 Cars에서)
-    public void moveAllOnceByRandom() {
+    void moveOnce(IntSupplier rng) {
         for (Car car : values) {
-            int value = Randoms.pickNumberInRange(0, 9);
-            car.tryMove(value);
+            car.tryMove(rng.getAsInt());
         }
     }
 
