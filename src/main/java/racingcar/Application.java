@@ -30,6 +30,11 @@ public class Application {
             }
         }
 
+        // 결과
+        List<String> winners = cars.winnerNames();
+        String joined = winners.stream().collect(Collectors.joining(", "));
+        System.out.println();
+        System.out.println("최종 우승자 : " + joined);
     }
 
     private static int parseTryCount(String input) {

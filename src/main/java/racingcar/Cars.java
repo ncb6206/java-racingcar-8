@@ -1,10 +1,12 @@
 package racingcar;
 
+import java.util.Comparator;
 import java.util.function.IntSupplier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> values;
@@ -58,7 +60,13 @@ public class Cars {
         return lines;
     }
 
-    public List<Car> asList() {
-        return Collections.unmodifiableList(values);
+    List<String> winnerNames() {
+        int max = values.stream().max(Comparator.comparingInt(Car::getPosition))
+                .map(Car::getPosition)
+                .orElse(0);
+        return values.stream()
+                .filter(c -> c.getPosition() == max)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }
