@@ -5,9 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
+        // 입력
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String namesInput = Console.readLine();
 
@@ -15,7 +17,7 @@ public class Application {
         String tryCountInput = Console.readLine();
 
         // 파싱 및 검증
-        Cars cars = Cars.fromNamesLine(namesInput);
+        Cars cars = Cars.fromInput(namesInput);
         int tries = parseTryCount(tryCountInput);
 
         // 진행
